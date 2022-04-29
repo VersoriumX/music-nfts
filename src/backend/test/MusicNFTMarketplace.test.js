@@ -51,11 +51,11 @@ describe('MusicNFTMarketplace', function () {
       expect(await nftMarketplace.balanceOf(nftMarketplace.address)).to.equal(8)
       // Get each item from the marketItems array then check fields to ensure they are correct
       await Promise.all(
-        prices.map(async (i, indx) => {
+        prices.map(async (price, indx) => {
           const item = await nftMarketplace.marketItems(indx)
           expect(item.tokenId).to.equal(indx)
           expect(item.seller).to.equal(deployer.address)
-          expect(item.price).to.equal(i)
+          expect(item.price).to.equal(price)
         })
       )
     })
